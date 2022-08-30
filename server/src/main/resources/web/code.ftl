@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0">
-    <title>代码预览</title>
+    <title>Code preview</title>
     <#include  "*/commonHeader.ftl">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
@@ -36,17 +36,11 @@
 
 
 <script>
-    /**
-     * 初始化
-     */
     window.onload = function () {
         initWaterMark();
         loadText();
     }
 
-    /**
-     *加载普通文本
-     */
     function loadText() {
         var base64data = $("#textData").val()
         var textData = Base64.decode(base64data);

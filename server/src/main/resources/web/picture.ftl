@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>图片预览</title>
+    <title>Picture preview</title>
     <link rel="stylesheet" href="css/viewer.min.css">
     <script src="js/viewer.min.js"></script>
     <#include "*/commonHeader.ftl">
@@ -38,7 +38,6 @@
     });
     document.getElementById("${currentUrl}").click();
 
-    /*初始化水印*/
     window.onload = function() {
         initWaterMark();
     }

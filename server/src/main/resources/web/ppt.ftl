@@ -8,7 +8,7 @@
     <link href="pptx/idocv/idocv_common.min.css" rel="stylesheet">
     <link href="pptx/jquery.contextMenu.css" rel="stylesheet">
 
-    <#--  手机端预览兼容  -->
+    <#--  for mobile device  -->
     <script type="text/javascript">
         var windowWidth = document.documentElement.clientWidth;
         var searchStr = window.location.search.substr(1);
@@ -36,7 +36,7 @@
 
 <div class="loading-mask" style="display: block;">
     <div class="loading-zone">
-        <div class="text"><img src="pptx/img/loader_indicator_lite.gif">加载中...</div>
+        <div class="text"><img src="pptx/img/loader_indicator_lite.gif">Loading...</div>
     </div>
 </div>
 
@@ -53,7 +53,7 @@
 
             <div class="nav-collapse collapse">
                 <p class="navbar-text pull-right">
-                    <a href="#" title="全屏" class="fullscreen-link"><i class="icon-fullscreen icon-white"></i></a>
+                    <a href="#" title="Full screen" class="fullscreen-link"><i class="icon-fullscreen icon-white"></i></a>
                 </p>
             </div><!--/.nav-collapse -->
         </div>
@@ -103,7 +103,7 @@
 <script>
     var resultData = {
         "code": 1,
-        "name": "PPT预览",
+        "name": "PPT preview",
         "totalSize": ${imgurls?size},
         "curPage": 1,
         "totalPage": 1,
@@ -136,8 +136,8 @@
     // var urlObj = $.url($.url().attr('source').replace(contextPath, ''));
     var id = window.location.pathname.replace(contextPath, '').split('/')[2];
     var uuid = id;
-    var params = getAllUrlParams(window.location.href); // 如果用urlObj.param()方法获取则被非正常解码
-    // var queryStr = urlObj.attr('query'); // 参数被decode，IE下如果有中文参数则报错，需要获取原生参数
+    var params = getAllUrlParams(window.location.href); // urlObj.param() for unusual decoding
+    // var queryStr = urlObj.attr('query');
     var queryStr = window.location.search.slice(1);
     uuid = !!'' ? '' : uuid;
     var name = 'pptx';
@@ -152,7 +152,7 @@
         authMap = JSON.parse(authMapStr);
     }
 </script>
-<!-- 客户自定义JS -->
+
 <script src="pptx/jquery.mobile-events.min.js"></script>
 <script src="pptx/ppt.js"></script>
 </body>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>多媒体文件预览</title>
+    <title>Media preview</title>
     <script src="js/flv.min.js" type="text/javascript"></script>
     <#include "*/commonHeader.ftl">
 </head>
@@ -30,7 +30,7 @@
         flvPlayer.load();
         flvPlayer.play();
     }
-    /*初始化水印*/
+
     window.onload = function() {
       initWaterMark();
     }

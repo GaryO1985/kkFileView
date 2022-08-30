@@ -9,9 +9,6 @@
 <script src="js/base64.min.js" type="text/javascript"></script>
 
 <script>
-    /**
-     * 初始化水印
-     */
     function initWaterMark() {
         let watermarkTxt = '${watermarkTxt}';
         if (watermarkTxt !== '') {
@@ -34,29 +31,17 @@
         }
     }
 
-    // 中文环境
-    var locale_zh_CN = {
-        OK: '确定',
-        CONFIRM: '确认',
-        CANCEL: '取消'
-    };
-    bootbox.addLocale('locale_zh_CN', locale_zh_CN);
-
-    /**
-     * 需要文件密码
-     */
     function needFilePassword() {
         if ('${needFilePassword}' == 'true') {
-            let promptTitle = "你正在预览加密文件，请输入文件密码。";
+            let promptTitle = "This file needs password to access";
             if ('${filePasswordError}' == 'true') {
-                promptTitle = "密码错误，请重新输入密码。";
+                promptTitle = "Password incorrect, please input again.";
             }
 
             bootbox.prompt({
                 title: promptTitle,
                 inputType: 'password',
                 centerVertical: true,
-                locale: 'locale_zh_CN',
                 callback: function (filePassword) {
                     if (filePassword != null) {
                         const locationHref = window.location.href;

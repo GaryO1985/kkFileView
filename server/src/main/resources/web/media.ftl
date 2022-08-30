@@ -2,7 +2,7 @@
 <html lang="zh-cn">
 <head>
     <meta charset="utf-8"/>
-    <title>多媒体文件预览</title>
+    <title>Media preview</title>
     <link rel="stylesheet" href="plyr/plyr.css"/>
     <script type="text/javascript" src="plyr/plyr.js"></script>
     <#include "*/commonHeader.ftl">

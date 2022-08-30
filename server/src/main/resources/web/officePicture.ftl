@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>PDF图片预览</title>
+    <title>PDF file preview</title>
     <script src="js/lazyload.js"></script>
     <#include "*/commonHeader.ftl">
     <style>
@@ -28,11 +28,10 @@
     </#list>
 </div>
 <#if "false" == switchDisabled>
-    <img src="images/pdf.svg" width="63" height="63" style="position: fixed; cursor: pointer; top: 40%; right: 48px; z-index: 999;" alt="使用PDF预览" title="使用PDF预览" onclick="changePreviewType('pdf')"/>
+    <img src="images/pdf.svg" width="63" height="63" style="position: fixed; cursor: pointer; top: 40%; right: 48px; z-index: 999;" alt="Use the PDF to preview" title="Use the PDF to preview" onclick="changePreviewType('pdf')"/>
 </#if>
 <script>
     window.onload = function () {
-        /*初始化水印*/
         initWaterMark();
         checkImgs();
     };

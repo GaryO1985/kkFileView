@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0">
-    <title>xml文本预览</title>
+    <title>xml file preview</title>
     <#include  "*/commonHeader.ftl">
     <link rel="stylesheet" href="css/xmlTreeViewer.css"/>
     <script src="js/xmlTreeViewer.js" type="text/javascript"></script>
@@ -34,18 +34,14 @@
 </div>
 
 <script>
-    /**
-     * 初始化
-     */
+
     window.onload = function () {
         $("#xml_btn").hide()
         initWaterMark();
         loadXmlData()
     }
 
-    /**
-     * 加载xml数据
-     */
+
     function loadXmlData() {
         var textData = Base64.decode($("#textData").val())
         window.textPreData = "<xmp style='background-color: #FFFFFF;overflow-y: scroll;border:none'>" + textData + "</xmp>";

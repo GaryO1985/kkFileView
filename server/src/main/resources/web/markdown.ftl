@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0">
-    <title>markdown文本预览</title>
+    <title>markdown file preview</title>
     <script src="js/marked.min.js" type="text/javascript"></script>
     <#include "*/commonHeader.ftl">
 </head>
@@ -33,18 +33,13 @@
 </div>
 
 <script>
-    /**
-     * 初始化
-     */
+
     window.onload = function () {
         $("#markdown_btn").hide()
         initWaterMark();
         loadMarkdown();
     }
 
-    /**
-     * 加载markdown
-     */
     function loadMarkdown() {
         var textData = Base64.decode($("#textData").val())
         window.textPreData = "<pre style='background-color: #FFFFFF;border:none'>" + textData + "</pre>";

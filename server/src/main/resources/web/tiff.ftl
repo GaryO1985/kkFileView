@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Tiff 图片预览</title>
+    <title>Tiff preview</title>
     <link rel="stylesheet" href="css/viewer.min.css">
     <script src="js/tiff.min.js"></script>
     <#include "*/commonHeader.ftl">
@@ -40,7 +40,6 @@
     };
     xhr.send();
 
-    /*初始化水印*/
     window.onload = function () {
         initWaterMark();
     }

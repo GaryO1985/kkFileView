@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0">
-    <title>PDF预览</title>
+    <title>PDF file preview</title>
     <#include "*/commonHeader.ftl">
 </head>
 
@@ -16,7 +16,7 @@
 <iframe src="" width="100%" frameborder="0"></iframe>
 <#if "false" == switchDisabled>
     <img src="images/jpg.svg" width="63" height="63"
-         style="position: fixed; cursor: pointer; top: 40%; right: 48px; z-index: 999;" alt="使用图片预览" title="使用图片预览"
+         style="position: fixed; cursor: pointer; top: 40%; right: 48px; z-index: 999;" alt="Use the JPG to preview" title="Use the JPG to preview"
          onclick="goForImage()"/>
 </#if>
 </body>
@@ -29,9 +29,7 @@
     }
     document.getElementsByTagName('iframe')[0].src = "${baseUrl}pdfjs/web/viewer.html?file=" + encodeURIComponent(url) + "&disablepresentationmode=${pdfPresentationModeDisable}&disableopenfile=${pdfOpenFileDisable}&disableprint=${pdfPrintDisable}&disabledownload=${pdfDownloadDisable}&disablebookmark=${pdfBookmarkDisable}";
     document.getElementsByTagName('iframe')[0].height = document.documentElement.clientHeight - 10;
-    /**
-     * 页面变化调整高度
-     */
+
     window.onresize = function () {
         var fm = document.getElementsByTagName("iframe")[0];
         fm.height = window.document.documentElement.clientHeight - 10;
@@ -47,7 +45,6 @@
         window.location.href = url;
     }
 
-    /*初始化水印*/
     window.onload = function () {
         initWaterMark();
     }

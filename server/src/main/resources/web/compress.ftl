@@ -43,13 +43,13 @@
         },
         callback:{
             beforeClick:function (treeId, treeNode, clickFlag) {
-                console.log("节点参数：treeId-" + treeId + "treeNode-"
+                console.log("node parameters：treeId-" + treeId + "treeNode-"
                         + JSON.stringify(treeNode) + "clickFlag-" + clickFlag);
             },
             onClick:function (event, treeId, treeNode) {
                 if (!treeNode.directory) {
-                    /**实现窗口最大化**/
-                    var fulls = "left=0,screenX=0,top=0,screenY=0,scrollbars=1";    //定义弹出窗口的参数
+                    /** Maximize the window **/
+                    var fulls = "left=0,screenX=0,top=0,screenY=0,scrollbars=1";
                     if (window.screen) {
                         var ah = screen.availHeight - 30;
                         var aw = (screen.availWidth - 10) / 2;
@@ -59,7 +59,7 @@
                         fulls += ",innerWidth=" + aw;
                         fulls += ",resizable"
                     } else {
-                        fulls += ",resizable"; // 对于不支持screen属性的浏览器，可以手工进行最大化。 manually
+                        fulls += ",resizable"; // manually
                     }
                     var previewUrl = baseUrl + treeNode.fileName +"?fileKey="+ treeNode.fileKey;
                     window.open("onlinePreview?url=" + encodeURIComponent(Base64.encode(previewUrl)), "_blank",fulls);
@@ -75,28 +75,20 @@
         $(".zTreeDemoBackground").css("height", height);
     });
 
-    /*初始化水印*/
     window.onload = function() {
       initWaterMark();
     }
 
-    /**
-     *  计算ztreedom的高度
-     */
     function getZtreeDomHeight() {
         return $("#treeDemo").height() > window.document.documentElement.clientHeight - 1
                 ? $("#treeDemo").height() : window.document.documentElement.clientHeight - 1;
     }
-    /**
-     * 页面变化调整高度
-     */
+
     window.onresize = function(){
         height = getZtreeDomHeight();
         $(".zTreeDemoBackground").css("height", height);
     }
-    /**
-     * 滚动时调整高度
-     */
+
     window.onscroll = function(){
         height = getZtreeDomHeight();
         $(".zTreeDemoBackground").css("height", height);
