@@ -179,10 +179,12 @@ public class ConvertPicUtil {
      * @return File
      */
     public static File convertTif2Pdf(String strTifFile, String strPdfFile) {
+        RandomAccessFileOrArray rafa = null;
+        Document document = null;
         try {
-            RandomAccessFileOrArray rafa = new RandomAccessFileOrArray(strTifFile);
+            rafa = new RandomAccessFileOrArray(strTifFile);
 
-            Document document = new Document();
+            document = new Document();
             // 设置文档页边距
             document.setMargins(0, 0, 0, 0);
 
@@ -192,38 +194,60 @@ public class ConvertPicUtil {
             Image image;
             File filePDF;
 
-            if (intPages == 1) {
-                String strJpg = strTifFile.substring(0, strTifFile.lastIndexOf(".")) + ".jpg";
-                File fileJpg = new File(strJpg);
-                List<String> listPic2Jpg = convertTif2Jpg(strTifFile, strJpg);
-
-                if (listPic2Jpg != null && fileJpg.exists()) {
-                    convertJpg2Pdf(strJpg, strPdfFile);
-                }
-
-            } else {
-                for (int i = 1; i <= intPages; i++) {
-                    image = TiffImage.getTiffImage(rafa, i);
-                    // 设置页面宽高与图片一致
-                    Rectangle pageSize = new Rectangle(image.getScaledWidth(), image.getScaledHeight());
-                    document.setPageSize(pageSize);
-                    // 图片居中
-                    image.setAlignment(Image.ALIGN_CENTER);
-                    //新建一页添加图片
-                    document.newPage();
-                    document.add(image);
-                }
-
-                document.close();
+            for (int i = 1; i <= intPages; i++) {
+                image = TiffImage.getTiffImage(rafa, i);
+                // 设置页面宽高与图片一致
+                Rectangle pageSize = new Rectangle(image.getScaledWidth(), image.getScaledHeight());
+                document.setPageSize(pageSize);
+                // 图片居中
+                image.setAlignment(Image.ALIGN_CENTER);
+                //新建一页添加图片
+                document.newPage();
+                document.add(image);
             }
 
-            rafa.close();
+//            if (intPages == 1) {
+//                String strJpg = strTifFile.substring(0, strTifFile.lastIndexOf(".")) + ".jpg";
+//                File fileJpg = new File(strJpg);
+//                List<String> listPic2Jpg = convertTif2Jpg(strTifFile, strJpg);
+//
+//                if (listPic2Jpg != null && fileJpg.exists()) {
+//                    convertJpg2Pdf(strJpg, strPdfFile);
+//                }
+//
+//            } else {
+//                for (int i = 1; i <= intPages; i++) {
+//                    image = TiffImage.getTiffImage(rafa, i);
+//                    // 设置页面宽高与图片一致
+//                    Rectangle pageSize = new Rectangle(image.getScaledWidth(), image.getScaledHeight());
+//                    document.setPageSize(pageSize);
+//                    // 图片居中
+//                    image.setAlignment(Image.ALIGN_CENTER);
+//                    //新建一页添加图片
+//                    document.newPage();
+//                    document.add(image);
+//                }
+//
+//                document.close();
+//            }
+
 
             filePDF = new File(strPdfFile);
 
             return filePDF;
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
+        } finally {
+            if (document != null) {
+                document.close();
+            }
+            if (rafa != null) {
+                try {
+                    rafa.close();
+                } catch (IOException e) {
+                    logger.error(e.getMessage(), e);
+                }
+            }
         }
         return null;
     }
