@@ -195,7 +195,13 @@ public class ConvertPicUtil {
             File filePDF;
 
             for (int i = 1; i <= intPages; i++) {
-                image = TiffImage.getTiffImage(rafa, i);
+                try {
+                    image = TiffImage.getTiffImage(rafa, i);
+                } catch (Throwable e) {
+                    logger.error(e.getMessage(), e);
+                    continue;
+                }
+
                 // 设置页面宽高与图片一致
                 Rectangle pageSize = new Rectangle(image.getScaledWidth(), image.getScaledHeight());
                 document.setPageSize(pageSize);
