@@ -58,10 +58,10 @@ public class TiffFilePreviewImpl implements FilePreview {
                 model.addAttribute(INITIALIZE_MEMORY_SIZE, Long.toString(INITIALIZE_MEMORY_SIZE_VALUE_DEFAULT));
             }
             return TIFF_FILE_PREVIEW_PAGE;
-//            return PICTURE_FILE_PREVIEW_PAGE;
 
         } else if ("jpg".equalsIgnoreCase(tifPreviewType) || "pdf".equalsIgnoreCase(tifPreviewType)) {
-            String inputFileName = url.substring(url.lastIndexOf("/") + 1);
+            String inputFileName = fileAttribute.getName();
+//            String inputFileName = url.substring(url.lastIndexOf("/") + 1);
             String inputFileNamePrefix = inputFileName.substring(0, inputFileName.lastIndexOf("."));
 
             String strLocalTif = fileDir + inputFileName;

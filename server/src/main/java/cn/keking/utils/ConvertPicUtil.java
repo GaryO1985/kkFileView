@@ -197,7 +197,7 @@ public class ConvertPicUtil {
             for (int i = 1; i <= intPages; i++) {
                 try {
                     image = TiffImage.getTiffImage(rafa, i);
-                } catch (Throwable e) {
+                } catch (Throwable e) { // 部分tif文件intPages会大于1，但实际只有1页，这里做下兼容。
                     logger.error(e.getMessage(), e);
                     continue;
                 }
@@ -211,32 +211,6 @@ public class ConvertPicUtil {
                 document.newPage();
                 document.add(image);
             }
-
-//            if (intPages == 1) {
-//                String strJpg = strTifFile.substring(0, strTifFile.lastIndexOf(".")) + ".jpg";
-//                File fileJpg = new File(strJpg);
-//                List<String> listPic2Jpg = convertTif2Jpg(strTifFile, strJpg);
-//
-//                if (listPic2Jpg != null && fileJpg.exists()) {
-//                    convertJpg2Pdf(strJpg, strPdfFile);
-//                }
-//
-//            } else {
-//                for (int i = 1; i <= intPages; i++) {
-//                    image = TiffImage.getTiffImage(rafa, i);
-//                    // 设置页面宽高与图片一致
-//                    Rectangle pageSize = new Rectangle(image.getScaledWidth(), image.getScaledHeight());
-//                    document.setPageSize(pageSize);
-//                    // 图片居中
-//                    image.setAlignment(Image.ALIGN_CENTER);
-//                    //新建一页添加图片
-//                    document.newPage();
-//                    document.add(image);
-//                }
-//
-//                document.close();
-//            }
-
 
             filePDF = new File(strPdfFile);
 
